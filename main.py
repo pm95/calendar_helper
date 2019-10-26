@@ -1,7 +1,9 @@
+import CONFIG
 import sys
 import pyqrcode
 from pprint import pprint
 from CalendarWorker import CalendarWorker
+
 
 # generate ical file from screenshot
 calWorker = CalendarWorker(sys.argv[1])
@@ -17,7 +19,7 @@ big_code = pyqrcode.create(
     mode='binary'
 )
 big_code.png(
-    'code.png',
+    CONFIG.QR_CODE_FILE,
     scale=6,
     module_color=[
         0, 0, 0, 255],
