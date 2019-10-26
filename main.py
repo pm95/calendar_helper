@@ -111,27 +111,30 @@ for day in week_days:
     for course in week_days[day]:
         event = Event()
 
+        # course location data
         location = "%s %s" % (
             week_days[day][course][2],
             week_days[day][course][3]
         )
 
+        # datetime data
         time_str = week_days[day][course][1].split(' - ')
-
         dtstart_str = '2019-10-21 %s' % time_str[0]
         dtend_str = '2019-10-21 %s' % time_str[1]
         format_str = '%Y-%m-%d %I:%M%p'
         dtstart = datetime.datetime.strptime(dtstart_str, format_str)
         dtend = datetime.datetime.strptime(dtend_str, format_str)
 
+        # course description data
         description = week_days[day][course][0]
 
+        # add attributes to event object
         event.add('summary', course)
         event.add('description', description)
         event.add('location', location)
         event.add('dtstart', dtstart)
         event.add('dtend', dtend)
-        event.add('rrule', {'freq': 'weekly', 'byday': day[:2]})
+        event.add('rrule', {'freq': 'weekly', 'byday': day[:2], 'count': 2})
 
         cal.add_component(event)
 
