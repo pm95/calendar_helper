@@ -4,18 +4,10 @@ import pytesseract
 from PIL import Image
 from flask import Flask
 from pprint import pprint
+from icalendar import Calendar, Event
 
-#
-#
-#
-#
+
 # core function definitions
-#
-#
-#
-#
-
-
 def ocr_core(filename):
     # function to handle core OCR processing
     text = pytesseract.image_to_string(Image.open(filename))
@@ -110,4 +102,35 @@ week_days = text_to_events(text_from_image, week_days)
 # format events dictionary to have days as keys and classes as sub-dict keys
 week_days = format_events(week_days)
 
-pprint(week_days)
+
+# create iCal file from dictionary above
+cal = Calendar()
+
+for day in week_days:
+    for course in week_days[day]:
+        event = Event()
+
+        location = "%s %s" % (
+            week_days[day][course][2],
+            week_days[day][course][3]
+        )
+        description = week_days[day][course][0]
+
+        # print(
+        #     "%s\n%s\n%s\n%s\n\n"
+        #     % (
+        #         day,
+        #         course,
+        #         location,
+        #         description,
+        #     )
+        # )
+
+        event.add('summary', course)
+        event.add('description', description)
+        event.add('location', location)
+
+        cal.add_component(event)
+
+with open('course_schedule.ics', 'wb') as fout:
+    fout.write(cal.to_ical())

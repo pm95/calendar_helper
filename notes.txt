@@ -1,0 +1,56 @@
+sample dict structure
+sample = {
+    {'Friday': {
+        'CSCE 5543 - 001': [
+            'Lecture',
+            '9:40AM - 10:30AM',
+            'J.B. Hunt Tr. Sve.',
+            'Ctr Acad Ex 0239'],
+        'CSCE 5673 - 001': [
+            'Lecture',
+            '10:45AM - 11:35AM',
+            'Bell Engineering',
+            '2269'],
+        'CSCE 5773 - 001': [
+            'Lecture',
+            '12:55PM - 1:45PM',
+            'J.B. Hunt Tr. Sve.',
+            'Ctr Acad Ex 0216']},
+     'Monday': {
+         'CSCE 5543 - 001': [
+             'Lecture',
+             '9:40AM - 10:30AM',
+             'J.B. Hunt Tr. Sve.',
+             'Ctr Acad Ex 0239'],
+        'CSCE 5673 - 001': [
+             'Lecture',
+             '10:45AM - 11:35AM',
+             'Bell Engineering',
+             '2269'],
+        'CSCE 5773 - 001': [
+             'Lecture',
+             '12:55PM - 1:45PM',
+             'J.B. Hunt Tr. Sve.',
+             'Ctr Acad Ex 0216']},
+     'Saturday': {},
+     'Sunday': {},
+     'Thursday': {},
+     'Tuesday': {},
+     'Wednesday': {
+         'CSCE 5543 - 001': [
+             'Lecture',
+             '9:40AM - 10:30AM',
+             'J.B. Hunt Tr. Sve.',
+             'Ctr Acad Ex 0239'],
+        'CSCE 5673 - 001': [
+             'Lecture',
+             '10:45AM - 11:35AM',
+             'Bell Engineering',
+             '2269'],
+        'CSCE 5773 - 001': [
+             'Lecture',
+             '12:55PM - 1:45PM',
+             'J.B. Hunt Tr. Sve.',
+             'Ctr Acad Ex 0216']}
+     }
+}
