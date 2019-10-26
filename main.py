@@ -1,6 +1,7 @@
 import re
 import sys
 import pytesseract
+import datetime
 from PIL import Image
 from flask import Flask
 from pprint import pprint
@@ -114,21 +115,23 @@ for day in week_days:
             week_days[day][course][2],
             week_days[day][course][3]
         )
-        description = week_days[day][course][0]
 
-        # print(
-        #     "%s\n%s\n%s\n%s\n\n"
-        #     % (
-        #         day,
-        #         course,
-        #         location,
-        #         description,
-        #     )
-        # )
+        time_str = week_days[day][course][1].split(' - ')
+
+        dtstart_str = '2019-10-21 %s' % time_str[0]
+        dtend_str = '2019-10-21 %s' % time_str[1]
+        format_str = '%Y-%m-%d %I:%M%p'
+        dtstart = datetime.datetime.strptime(dtstart_str, format_str)
+        dtend = datetime.datetime.strptime(dtend_str, format_str)
+
+        description = week_days[day][course][0]
 
         event.add('summary', course)
         event.add('description', description)
         event.add('location', location)
+        event.add('dtstart', dtstart)
+        event.add('dtend', dtend)
+        event.add('rrule', {'freq': 'weekly', 'byday': day[:2]})
 
         cal.add_component(event)
 
